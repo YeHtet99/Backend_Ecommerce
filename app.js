@@ -36,6 +36,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Credentials", true);
   next();
 });
+app.get('/',(req,res)=>res.send('Hello Welcome'))
 
 app.use(
   "/upload/productData/",
