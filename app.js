@@ -50,12 +50,12 @@ app.use(router)
 const password = encodeURIComponent("");
 const credentialSegment = (username && password) ? `${username}:${password}@` : '';
 
-const uri = `mongodb://${credentialSegment}${"127.0.0.1"}:${"27017"}`;
+// const uri = `mongodb://${credentialSegment}${"127.0.0.1"}:${"27017"}`;
 // const uri="const uri = 'mongodb://mongodb:27017/Testing';"
 // const uri = `mongodb://${credentialSegment}${"yehtet"}.${"joq3baw"}/${"testing"}?authMechanism=DEFAULT`
-// const uri = `mongodb+srv://yemyinthtet:yehtet610999@yehtet.joq3baw.mongodb.net/`
+const uri = `mongodb+srv://yemyinthtet:yehtet610999@yehtet.joq3baw.mongodb.net/`
 
-mongoose.connect(uri, { useNewUrlParser: true, dbName: "Testing" });
+mongoose.connect(uri, { useNewUrlParser: true, dbName: "Ecommerce" });
 const db = mongoose.connection;
 db.on("error", (error) => console.log("----->", error));
 db.once("open", async () => {
