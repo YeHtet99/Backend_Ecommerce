@@ -109,11 +109,15 @@ const updateItemQuantity = async (req,res,next)=>{
       console.log("result",result)
       console.log("findone",findOne)
     }
+    let updateData = [];
+    if(data?.length > 0){
+      updateData = await Item.find({ownerId:data[0].ownerId})
+    }
     // const result =await itemService.getItem(ownerId);
     return res.json(
       response({
         success:true,
-        payload:[]
+        payload:updateData
       })
     )
   }catch(err){
