@@ -8,7 +8,17 @@ const path =require('path')
 
 const createProduct = async (req, res, next) => {
   try {
-    const { productName,categoryName,price,description,userId}=req.body
+    const { productName,categoryName,price,description,userId,displaySize,
+      weights,
+      chipSet,
+      cpu,
+      gpu,
+      storage,
+      selfieCamera,
+      mainCamera,
+      ultraWide,
+      telePhoto,
+      battery}=req.body
     // const user = await getCurrentUser(req, res);
     // const general_information = JSON.parse(req.body.general_information);
     // const boundary_setting = JSON.parse(req.body.boundary_setting);
@@ -24,7 +34,18 @@ const createProduct = async (req, res, next) => {
       category : categoryName,
       price,
       description,
-      originalFileName:req.files.file[0].originalname
+      originalFileName:req.files.file[0].originalname,
+      displaySize,
+      weights,
+      chipSet,
+      cpu,
+      gpu,
+      storage,
+      selfieCamera,
+      mainCamera,
+      ultraWide,
+      telePhoto,
+      battery
       // userId
     });
     const products= await Product.find({}).sort({createdDate: -1});
@@ -44,7 +65,18 @@ const createProduct = async (req, res, next) => {
 
 const updateProduct = async (req,res,next)=>{
   try {
-    const { productName,categoryName,price,description,userId}=req.body
+    const { productName,categoryName,price,description,userId,displaySize,
+      weights,
+      chipSet,
+      cpu,
+      gpu,
+      storage,
+      selfieCamera,
+      mainCamera,
+      ultraWide,
+      telePhoto,
+      battery}=req.body
+      console.log("body",req.body)
     const {id} = req.params
     console.log("id",id)
     console.log("files",req.files &&
@@ -74,7 +106,17 @@ const updateProduct = async (req,res,next)=>{
     } 
     await Product.findOneAndUpdate(
       {_id:new ObjectId(id)},
-      { $set: { productName:productName,category:categoryName,price:price,description:description} },
+      { $set: { productName:productName,category:categoryName,price:price,description:description,displaySize,
+        weights:weights,
+        chipSet:chipSet,
+        cpu:cpu,
+        gpu:gpu,
+        storage:storage,
+        selfieCamera:selfieCamera,
+        mainCamera:mainCamera,
+        ultraWide:ultraWide,
+        telePhoto:telePhoto,
+        battery:battery} },
   { upsert: true }
     );
     const products = await Product.find({}).sort({createdDate: -1})

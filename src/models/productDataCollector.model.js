@@ -9,6 +9,18 @@ const productDataCollectorSchema = mongoose.Schema({
     price:Number,
     description:String,
     originalFileName:String,
+    displaySize:String,
+    weights:String,
+    chipSet:String,
+    cpu:String,
+    gpu:String,
+    storage:String,
+    selfieCamera:String,
+    mainCamera:String,
+    ultraWide:String,
+    telePhoto:String,
+    battery:String,
+    
     // userId: {
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'users',    
